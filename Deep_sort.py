@@ -1,8 +1,9 @@
-
+#!/home/icarus/.virtualenvs/py3cv4/bin/python3
 import cv2
 import numpy as np
 import sys
 import glob
+from cv_bridge import CvBridge
 
 import time
 import torch
@@ -64,7 +65,7 @@ class YoloDetector():
             if row[4] >= confidence:
                 x1, y1, x2, y2 = int(row[0]*x_shape), int(row[1]*y_shape), int(row[2]*x_shape), int(row[3]*y_shape)
                 
-                if self.class_to_label(labels[i]) == 'cup':
+                if self.class_to_label(labels[i]) == 'person':
                 
                     x_center = x1 + (x2 - x1)
                     y_center = y1 + ((y2 - y1) / 2)
